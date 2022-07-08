@@ -1,0 +1,46 @@
+<div class="container">
+ <div class="row justify-content-center mt-5">
+  <h5 class="mt-5">新規登録</h5>
+ </div>
+ 
+ <div class="row justify-content-center mt-5">
+  <%= form_with model: @user,url: user_registration_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <table class="table table-borderless border-bottom border-dark">
+   <tbody>
+    <tr>
+     <td>名前</td>
+     <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+     <td>メールアドレス</td>
+     <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    <tr>
+     <td>パスワード</td>
+     <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+    </tr>
+    <tr>
+     <td>
+      <p>
+       パスワード</br>
+       (確認用)
+      </p>
+     </td>
+     <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+    </tr>
+    <tr>
+     <td></td>
+     <td><%= f.submit "新規登録" %></td>
+    </tr>
+   </tbody>
+  </table>
+  <% end %>
+ </div>
+ 
+ <div class="text-center">
+  <p>
+   アカウントを既にお持ちの方は<%= link_to "こちら",new_user_session_path %>から
+  </p>
+ </div>
+</div>
