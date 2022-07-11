@@ -1,0 +1,35 @@
+<div class="container">
+ <div class="row mt-5">
+  <h5 class="mt-5">タスクを追加する</h5>
+ </div>
+ 
+ <div class="row justify-content-center">
+  <%= form_with model: @task,url: tasks_path do |f| %>
+   <div class="form m-2">
+    <%= f.select :list_id, @list.map{|list| [list.name,list.id]},{},{class:'form-control border border-dark'} %>
+   </div>
+   
+   <div class="form m-2">
+    <%= f.text_field :name,class:'form-control border border-dark' %>
+   </div>
+   
+   <div class="form m-2">
+    <%= f.text_area :explanation,class:'form-control border border-dark',size:"40x5" %>
+   </div>
+   
+   <div class="form m-2">
+    <%= f.label :tag,"#" %>
+    <%= f.text_field :tag,size:"8" %>
+   </div>
+   
+   <div class="time text-center">
+    <%= f.date_select :start_time %></br>
+    <%= f.time_select :start_time %> ~ <%= f.time_select :finish_time %>
+   </div>
+   
+   <div class="text-center m-5">
+    <%= f.submit "追加する",class:'' %>
+   </div>
+  <% end %>
+ </div>
+</div>

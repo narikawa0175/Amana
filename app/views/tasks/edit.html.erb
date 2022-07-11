@@ -1,0 +1,28 @@
+<div class="container">
+ <div class="row justify-content-center m-5">
+  <%= form_with model: @task,url: task_path(@task.id),method: :patch do |f| %>
+   
+   <div class="form m-2">
+    <%= f.text_field :name,class:'form-control border border-dark' %>
+   </div>
+   
+   <div class="form m-2">
+    <%= f.text_area :explanation,class:'form-control border border-dark',size:"60x10" %>
+   </div>
+   
+   <div class="form m-2">
+    <%= f.label :tag,"#" %>
+    <%= f.text_field :tag,size:"8" %>
+   </div>
+   
+   <div class="time text-center">
+    <%= f.date_select :start_time %></br>
+    <%= f.time_select :start_time %> ~ <%= f.time_select :finish_time %>
+   </div>
+   
+   <div class="text-center m-5">
+    <%= f.submit "変更内容を確定する",class:'' %>
+   </div>
+  <% end %>
+ </div>
+</div>

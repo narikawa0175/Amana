@@ -1,2 +1,12 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<div class="container">
+ <div class="row m-5">
+  <h4 class="m-5">リストを追加する</h4>
+ </div>
+ 
+ <div class="row justify-content-center">
+  <%= form_with model: @list,url: lists_path do |f| %>
+   <%= f.text_field :name %>
+   <%= f.submit "追加する" %>
+  <% end %>
+ </div>
+</div>
