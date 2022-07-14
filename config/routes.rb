@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tasks,only:[:create,:edit,:update,:destroy]
   patch '/users/:id/withdrawal' => 'users#withdrawal',as:'withdrawal_user'
   get '/list' => 'lists#new',as:'new_list'
+  get '/task/calendar' => 'tasks#calendar',as:'calendar_task'
   get '/task' => 'tasks#new',as:'new_task'
   patch '/complete_all_tasks/:id' => 'tasks#complete_all',as:'complete_all_task'
   get '/tasks/:id' => 'tasks#index',as:'index_tasks'

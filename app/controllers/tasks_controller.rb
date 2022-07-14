@@ -10,19 +10,29 @@ class TasksController < ApplicationController
    @list = current_user.lists
   end
   
+  def calendar
+   @events = current_user.tasks
+  end
+  
   def create
    @task = Task.new(task_params)
+   @task.user_id = current_user.id
+   tag_list = params[:task][:tag_name].split(nil)
    @task.save
+   @task.save_tag(tag_list)
    redirect_to index_tasks_path(@task.list_id)
   end
 
   def edit
    @task = Task.find(params[:id])
+   @task_tags = @task.tags
   end
   
   def update
    @task = Task.find(params[:id])
+   tag_list = params[:task][:tag_name].split(nil)
    @task.update(task_params)
+   @task.save_tag(tag_list)
    redirect_to index_tasks_path(@task.list_id)
   end
   

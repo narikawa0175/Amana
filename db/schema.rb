@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_104509) do
+ActiveRecord::Schema.define(version: 2022_07_14_105340) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -28,16 +28,29 @@ ActiveRecord::Schema.define(version: 2022_07_10_104509) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer "list_id", null: false
     t.string "name", null: false
     t.text "explanation"
-    t.string "tag"
     t.boolean "complete", default: false, null: false
     t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "finish_time"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,8 +11,10 @@
    </div>
    
    <div class="form m-2">
-    <%= f.label :tag,"#" %>
-    <%= f.text_field :tag,size:"8" %>
+    <%= f.text_field :tag_name %>
+    <% @task_tags.each do |tag| %>
+     <%= tag.tag_name %>
+    <% end %>
    </div>
    
    <div class="time text-center">
