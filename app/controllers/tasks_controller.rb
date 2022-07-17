@@ -1,8 +1,7 @@
 class TasksController < ApplicationController
   def index
    @list = List.find(params[:id])
-   @tasks = @list.tasks
-   @task = Task.new
+   @tasks = params[:tag_id].present? ? Tag.find(params[:tag_id]).tasks : @list.tasks.order(params[:sort])
   end
 
   def new

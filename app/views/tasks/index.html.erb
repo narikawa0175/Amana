@@ -1,5 +1,8 @@
 <div class="container">
  <div class="row m-5">
+  <%= form_with url: index_tasks_path(@list.id),method: :get,class: 'boards_searchForm' do |f| %>
+   <%= f.select :tag_id,options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)'} %>
+  <% end %>
   <%= link_to "+",new_task_path,class:'btn btn-primary rounded-circle p-0 ml-auto mr-5',style:"width: 4rem; height: 4rem; line-height: 4rem;" %>
  </div>
  
@@ -30,9 +33,12 @@
   <table class="table table-borderless border border-dark col-8 ml-5">
    <thead class="border-bottom border-dark bg-secondary">
     <tr>
-     <th></th>
-     <th class="text-white"><%= @list.name %></th>
-     <th></th>
+     <th class="text-white" colspan="2"><%= @list.name %></th>
+     <th colspan="2">
+      名前順<%= link_to "↑",index_tasks_path(@list.id,sort: 'name') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'name DESC') %>
+      作成順<%= link_to "↑",index_tasks_path(@list.id,sort: 'created_at') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'created_at DESC') %>
+      日付順<%= link_to "↑",index_tasks_path(@list.id,sort: 'start_time') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'start_time DESC') %>
+     </th>
     </tr>
    </thead>
    <tbody>
@@ -45,6 +51,7 @@
          <%= task.name %>
         <% end %>
        </td>
+       <td><%= task.start_time.strftime('%Y.%m.%d') %></td>
        <td><%= link_to "削除",task_path(task.id),method: :delete %></td>
       </tr>
      <% end %>
