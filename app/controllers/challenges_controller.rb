@@ -20,9 +20,14 @@ class ChallengesController < ApplicationController
   def complete
    @user = User.find(current_user.id)
    @challenge = Challenge.find(params[:id])
-   @user.total_point += @challenge.point
-   @challenge.update(complete: true)
-   @user.update(total_point: @user.total_point)
+   now = Time.current
+   if @challenge.complete && now.ago(1.days)
+    @challenge.update(complete: false)
+   else
+    @user.total_point += @challenge.point
+    @challenge.update(complete: true)
+    @user.update(total_point: @user.total_point)
+   end
    redirect_to challenges_path
   end
   
