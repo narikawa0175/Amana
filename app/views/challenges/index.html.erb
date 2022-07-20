@@ -1,0 +1,78 @@
+<div class="container">
+ <div class="row">
+  <div class="col-6">
+   <table class="table border mt-5">
+    <thead>
+     <tr>
+      <th colspan="4"><%= link_to "+  チャレンジを追加する",new_challenge_path %></th>
+     </tr>
+    </thead>
+   
+    <tbody>
+     <% @challenges.each do |challenge| %>
+      <% unless challenge.complete %>
+       <tr>
+        <td><%= link_to "完了",complete_challenge_path(challenge.id),method: :patch %></td>
+        <td><%= challenge.name %></td>
+        <td><%= challenge.point %>P</td>
+        <td><%= link_to "削除",challenge_path(challenge.id),method: :delete %></td>
+       </tr>
+      <% end %>
+     <% end %>
+     <tr class="border border-white text-center">
+      <td colspan="4"><%= link_to "全て完了",complete_all_challenge_path,method: :patch %></td>
+     </tr>
+    </tbody>
+   </table>
+   
+   <table class="table border mt-5">
+    <thead>
+     <tr>
+      <th>完了リスト</th>
+      <th><%= link_to "全て削除",destroy_all_challenge_path,method: :delete %></th>
+     </tr>
+    </thead>
+   
+    <tbody>
+     <% @challenges.each do |challenge| %>
+      <% if challenge.complete %>
+       <tr>
+        <td colspan="2"><%= challenge.name %></td>
+       </tr>
+      <% end %>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+  
+  <div class="row mt-5 col-5 text-center mx-auto">
+   <p class="text-center border border-dark py-2 col-12"><%= @user.total_point %>P</p>
+   <table class="table border mt-5">
+    <thead>
+     <tr>
+      <th colspan="4" class="text-center col-4">ご褒美リスト</th>
+     </tr>
+    </thead>
+    
+    <tbody>
+     <% @rewards.each do |reward| %>
+      <tr>
+       <td><%= link_to "実行",reward_path(reward.id),method: :patch %></td>
+       <td><%= reward.cost_point %>P</td>
+       <td><%= reward.reward_name %></td>
+       <td><%= link_to "削除",reward_path(reward.id),method: :delete %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+   
+   <%= form_with model: @reward,url: rewards_path,method: :post do |f| %>
+    <div class="form">
+     <%= f.text_field :reward_name %></br>
+     <%= f.select :cost_point, {'ご褒美小(100p)':100,'ご褒美中(150p)':150,'ご褒美大(200p)':200},{include_blank: "消費ポイント"},{} %>
+     <%= f.submit "追加" %>
+    </div>
+   <% end %>
+  </div>
+ </div>
+</div>

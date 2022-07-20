@@ -4,7 +4,7 @@ class CreateChallenges < ActiveRecord::Migration[6.1]
       t.integer :user_id, null: false
       t.string :name, null: false
       t.boolean :complete, null: false, default: false
-      t.datetime :start_time
+      t.integer :point, default: 0
       t.timestamps
     end
   end
