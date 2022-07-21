@@ -20,8 +20,7 @@ class ChallengesController < ApplicationController
   def complete
    @user = User.find(current_user.id)
    @challenge = Challenge.find(params[:id])
-   now = Time.current
-   if @challenge.complete && now.ago(1.days)
+   if @challenge.complete && DateTime.now + 1
     @challenge.update(complete: false)
    else
     @user.total_point += @challenge.point
