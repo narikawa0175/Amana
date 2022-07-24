@@ -1,6 +1,6 @@
 <div class="container">
  <div class="row justify-content-center mt-5">
-  <h5 class="mt-5">ログイン</h5>
+  <h5 class="mt-5" style="color: lime;">ログイン</h5>
  </div>
  
  <div class="row justify-content-center mt-5">
@@ -8,16 +8,16 @@
   <table class="table table-borderless border-bottom border-dark">
    <tbody>
     <tr>
-     <td>メールアドレス</td>
+     <td style="color: lime;">メールアドレス</td>
      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
     </tr>
     <tr>
-     <td>パスワード</td>
+     <td style="color: lime;">パスワード</td>
      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
     </tr>
     <tr>
      <td></td>
-     <td><%= f.submit "ログイン" %></td>
+     <td><%= f.submit "ログイン",class:'btn btn-success' %></td>
     </tr>
    </tbody>
   </table>
@@ -25,8 +25,8 @@
  </div>
  
  <div class="text-center">
-  <p>
-   アカウントをお持ちでない方は<%= link_to "こちら",new_user_registration_path %>から
+  <p style="color: lime;">
+   アカウントをお持ちでない方は<%= link_to "こちら",new_user_registration_path,class:'btn btn-outline-primary' %>から
   </p>
  </div>
 </div>

@@ -1,10 +1,10 @@
-<div>
+<div class="text-white">
  <%= month_calendar events: @events do |date,events| %>
   <%= date.day %>
   
   <% events.first(3).each do |event| %>
    <div>
-    <%= link_to edit_task_path(event.id) do %>
+    <%= link_to edit_task_path(event.id),class:'text-white' do %>
      <%= event.name %>
     <% end %>
    </div>

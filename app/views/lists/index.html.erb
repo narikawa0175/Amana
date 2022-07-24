@@ -1,27 +1,26 @@
 <div class="container">
  <div class="row m-5">
-  <h4 class="mt-5">リスト一覧</h4>
+  <h4 class="mt-5" style="color: lime;">リスト一覧</h4>
  </div>
  
  <div class="row justify-content-center">
-  <table class="table table-borderless border border-dark col-6">
+  <table class="table table-borderless border col-6" style="background-color: black;">
    <thead class="bg-secondary">
     <tr>
-     <th><%= link_to "+  リストを追加する",new_list_path,class:'text-white' %></th>
-     <th class="text-white">未完了</th>
-     <th></th>
+     <th><%= link_to "+  リストを追加する",new_list_path,style:'color: lime;' %></th>
+     <th colspan="2" style="color: lime;">未完了</th>
     </tr>
    </thead>
    <tbody>
     <% @lists.each do |list| %>
      <tr>
-      <td>
-       <%= link_to index_tasks_path(list.id) do %>
+      <td style="vertical-align: middle;">
+       <%= link_to index_tasks_path(list.id),class:'text-white' do %>
         <%= list.name %>
        <% end %>
       </td>
-      <td><%= list.tasks.where(complete: false).count %></td>
-      <td><%= link_to "削除",list_path(list.id),method: :delete %></td>
+      <td class="text-white text-center" style="vertical-align: middle;"><%= list.tasks.where(complete: false).count %></td>
+      <td><%= link_to "削除",list_path(list.id),method: :delete,class:'btn btn-outline-danger' %></td>
      </tr>
     <% end %>
    </tbody>

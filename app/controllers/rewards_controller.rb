@@ -9,13 +9,12 @@ class RewardsController < ApplicationController
   def update
    @reward = Reward.find(params[:id])
    @user = User.find(current_user.id)
-   if @reward.cost_point < @user.total_point
+   if @reward.cost_point <= @user.total_point
     @user.total_point -= @reward.cost_point
     @user.update(total_point: @user.total_point)
-    redirect_to challenges_path
+    redirect_to challenges_path,notice: 'ポイントを消費しました'
    else
-    flash[:alert] = "ポイントが足りません"
-    redirect_to challenges_path
+    redirect_to challenges_path,alert: 'ポイントが足りません'
    end
   end
 

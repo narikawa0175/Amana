@@ -1,16 +1,16 @@
 <div class="container">
  <div class="row">
-  <div class="m-5">
-   <p class="text-center">ユーザープロフィール</p>
-   <table class="table table-borderless border border-dark">
+  <div class="border p-4 m-5" style="background-color: black;">
+   <p class="text-center" style="color: lime;">ユーザープロフィール</p>
+   <table class="table table-borderless">
     <tbody>
      <tr>
-      <td>名前</td>
-      <td><%= @user.name %></td>
+      <td class="text-white">名前</td>
+      <td class="text-white"><%= @user.name %></td>
      </tr>
      <tr>
-      <td>メールアドレス</td>
-      <td><%= @user.email %></td>
+      <td class="text-white">メールアドレス</td>
+      <td class="text-white"><%= @user.email %></td>
      </tr>
     </tbody>
    </table>
@@ -19,20 +19,25 @@
    </p>
   </div>
   
-  <div class="m-5">
-   <p class="text-center"><%= Date.current.strftime('%m月 %d日') %></p>
-   <table class="table table-borderless border border-dark">
+  <div class="border p-4 m-5" style="background-color: black;">
+   <p class="text-center px-5" style="color: lime;"><%= Date.current.strftime('%m月 %d日') %></p>
+   <table class="table table-borderless">
     <tbody>
      <% @task.each do |task| %>
-      <% unless task.complete %>
+      <% if task.complete %>
        <tr>
-        <td><%= task.name %></td>
+        <td class="text-success"><%= task.name %></td>
        </tr>
       <% else %>
        <tr>
-        <td>今日の予定はありません</td>
+        <td class="text-white"><%= task.name %></td>
        </tr>
       <% end %>
+     <% end %>
+     <% if @task.blank? %>
+      <tr>
+       <td class="text-white">今日の予定はありません</td>
+      </tr>
      <% end %>
     </tbody>
    </table>

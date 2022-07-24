@@ -3,27 +3,31 @@
   <%= form_with model: @task,url: task_path(@task.id),method: :patch do |f| %>
    
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control border border-dark' %>
+    <%= f.text_field :name,class:'form-control border text-white',style:'background-color: black;' %>
    </div>
    
-   <div class="form m-2">
-    <%= f.text_area :explanation,class:'form-control border border-dark',size:"60x10" %>
+   <div class="form m-2 text-center border" style="background-color: black;">
+    <%= f.label :explanation,"MEMO",class:'text-white' %>
+    <%= f.text_area :explanation,class:'form-control border',style:'background-color: black;',size:"60x10" %>
    </div>
    
-   <div class="form m-2">
-    <%= f.text_field :tag_name %>
+   <div class="form m-2 text-white">
     <% @task_tags.each do |tag| %>
-     <%= tag.tag_name %>
+     #<%= tag.tag_name %>
     <% end %>
    </div>
    
-   <div class="time text-center">
-    <%= f.datetime_select :start_time %></br>
-    <%= f.datetime_select :finish_time %>
+   <div class="form m-2 text-center">
+    <%= f.text_field :tag_name,class:'border text-white text-center',style:'background-color: black;',:placeholder=> "タグを追加" %>
+   </div>
+   
+   <div class="time text-center text-white">
+    <%= f.datetime_field :start_time,class:'border border-success' %> ~ 
+    <%= f.datetime_field :finish_time,class:'border border-success' %>
    </div>
    
    <div class="text-center m-5">
-    <%= f.submit "変更内容を確定する",class:'' %>
+    <%= f.submit "変更内容を確定する",class:'btn btn-success' %>
    </div>
   <% end %>
  </div>

@@ -11,30 +11,32 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-dark">
    <header class="border-bottom border-white bg-dark">
     <% if user_signed_in? %>
      <nav class="navbar navbar-expand-lg navbar-light">
-      <h4 class="navbar-brand p-5">Amana</h4>
+      <h4 class="navbar-brand p-5" style="color: lime;">Amana</h4>
       <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="navbarNavDropdown" 
        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav ml-auto">
-        <li><%= link_to "リスト一覧",lists_path %></li>
-        <li><%= link_to "マイページ",user_path(current_user.id) %></li>
-        <li><%= link_to "カレンダー",calendar_task_path %></li>
-        <li><%= link_to "チャレンジ",challenges_path %></li>
-        <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete %></li> 
+        <li><%= link_to "リスト一覧",lists_path,class:'btn btn-outline-primary mx-1' %></li>
+        <li><%= link_to "マイページ",user_path(current_user.id),class:'btn btn-outline-primary mx-1' %></li>
+        <li><%= link_to "カレンダー",calendar_task_path,class:'btn btn-outline-primary mx-1' %></li>
+        <li><%= link_to "チャレンジ",challenges_path,class:'btn btn-outline-primary mx-1' %></li>
+        <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete,class:'btn btn-outline-primary mx-1' %></li> 
        </ul>
       </div>
      </nav>
     <% else %>
-     <h4 class="p-5 text-success">Amana</h4>
+     <h4 class="p-5" style="color: lime;">Amana</h4>
     <% end %>
    </header>
    <main>
+    <p class="text-white bg-success"><%= notice %></p>
+    <p class="text-white bg-danger"><%= alert %></p>
     <%= yield %>
    </main>
   </body>
