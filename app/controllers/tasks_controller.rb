@@ -41,6 +41,17 @@ class TasksController < ApplicationController
    redirect_to index_tasks_path(@task.list_id)
   end
   
+  def destroy_all
+   @list = List.find(params[:id])
+   @tasks = @list.tasks
+   @tasks.each do |task|
+    if task.complete
+     task.destroy
+    end
+   end
+   redirect_to index_tasks_path(@list.id)
+  end
+  
   def complete
    @task = Task.find(params[:id])
    if @task.complete

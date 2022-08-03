@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Amana</title>
+    <script src="https://kit.fontawesome.com/ec845a5a4f.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,27 +12,47 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-dark">
-   <header class="border-bottom border-white bg-dark">
+  <body>
+   <header class="border-bottom border-white" style="background-color: black;">
     <% if user_signed_in? %>
      <nav class="navbar navbar-expand-lg navbar-light">
-      <h4 class="navbar-brand p-5" style="color: lime;">Amana</h4>
-      <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="navbarNavDropdown" 
+      <div style="width: 300px; height: 150px; background-image: url(/assets/Amana.png); background-size: cover; background-position: right;"></div>
+      <button class="navbar-toggler bg-secondary" type="button" data-toggler="collapse" data-target="navbarNavDropdown" 
        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav ml-auto">
-        <li><%= link_to "リスト一覧",lists_path,class:'btn btn-outline-primary mx-1' %></li>
-        <li><%= link_to "マイページ",user_path(current_user.id),class:'btn btn-outline-primary mx-1' %></li>
-        <li><%= link_to "カレンダー",calendar_task_path,class:'btn btn-outline-primary mx-1' %></li>
-        <li><%= link_to "チャレンジ",challenges_path,class:'btn btn-outline-primary mx-1' %></li>
-        <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete,class:'btn btn-outline-primary mx-1' %></li> 
+        <li>
+         <%= link_to lists_path,class:'btn btn-outline-primary mx-1' do %>
+          <i class="fa-solid fa-list"> 　リスト　</i>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to user_path(current_user.id),class:'btn btn-outline-primary mx-1' do %>
+          <i class="fa-solid fa-house-user"> マイページ</i>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to calendar_task_path,class:'btn btn-outline-primary mx-1' do %>
+          <i class="fa-regular fa-calendar"> カレンダー</i>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to challenges_path,class:'btn btn-outline-primary mx-1' do %>
+          <i class="fa-solid fa-heart"> チャレンジ</i>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to destroy_user_session_path,method: :delete,class:'btn btn-outline-primary mx-1' do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"> ログアウト</i>
+         <% end %>
+        </li> 
        </ul>
       </div>
      </nav>
     <% else %>
-     <h4 class="p-5" style="color: lime;">Amana</h4>
+     <div style="width: 300px; height: 150px; background-image: url(/assets/Amana.png); background-size: cover; background-position: right;"></div>
     <% end %>
    </header>
    <main>

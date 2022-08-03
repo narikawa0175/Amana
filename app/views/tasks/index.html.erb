@@ -1,16 +1,17 @@
 <div class="container">
  <div class="row m-5">
   <%= form_with url: index_tasks_path(@list.id),method: :get,class: 'boards_searchForm' do |f| %>
-   <%= f.select :tag_id,options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)'} %>
+   <%= f.select :tag_id,options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)',class:'form-control'} %>
   <% end %>
   <%= link_to "+",new_task_path,class:'btn btn-success rounded-circle p-0 ml-auto mr-5',style:"width: 4rem; height: 4rem; line-height: 4rem;" %>
  </div>
  
- <div class="row mx-auto">
+ <div class="form-inline">
   <table class="table table-borderless border text-center col-3 mr-4" style="background-color: black;">
-   <thead class="border-bottom bg-secondary">
+   <thead class="border-bottom">
     <tr>
-     <th colspan="2" style="color: lime;">完了リスト</th>
+     <th style="color: lime;">完了リスト</th>
+     <th><%= link_to "全て削除",destroy_all_task_path(@list.id),method: :delete,class:'btn-sm btn-danger' %></th>
     </tr>
    </thead>
    <tbody>
@@ -22,7 +23,7 @@
          <%= task.name %>
         <% end %>
        </td>
-       <td><%= link_to "戻す",complete_task_path(task.id),method: :patch,class:'btn btn-outline-danger' %></td>
+       <td><%= link_to "戻す",complete_task_path(task.id),method: :patch,class:'btn-sm btn-outline-danger' %></td>
       </tr>
      <% end %>
     <% end %>
@@ -30,7 +31,7 @@
   </table>
   
   <table class="table table-borderless border col-8 ml-5" style="background-color: black;">
-   <thead class="border-bottom bg-secondary">
+   <thead class="border-bottom">
     <tr>
      <th colspan="2" style="color: lime;"><%= @list.name %></th>
      <th colspan="2" style="color: lime;">
@@ -44,14 +45,22 @@
     <% @tasks.each do |task| %>
      <% unless task.complete %>
       <tr>
-       <td><%= link_to "完了",complete_task_path(task.id),method: :patch,class:'btn btn-outline-success' %></td>
-       <td style="vertical-align: middle;">
+       <td>
+        <%= link_to complete_task_path(task.id),method: :patch do %>
+         <i class="fa-solid fa-check fa-lg"></i>
+        <% end %>
+       </td>
+       <td>
         <%= link_to edit_task_path(task.id),class:'text-white' do %>
          <%= task.name %>
         <% end %>
        </td>
-       <td class="text-white" style="vertical-align: middle;"><%= task.start_time.strftime('%Y.%m.%d') %></td>
-       <td><%= link_to "削除",task_path(task.id),method: :delete,class:'btn btn-outline-danger' %></td>
+       <td class="text-white"><%= task.start_time.strftime('%Y.%m.%d') %></td>
+       <td>
+        <%= link_to task_path(task.id),method: :delete do %>
+         <i class="fa-solid fa-trash-can garbage"></i>
+        <% end %>
+       </td>
       </tr>
      <% end %>
     <% end %>

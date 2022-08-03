@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   
   root to: "homes#top"
   resources :users,only:[:show,:edit,:update]
@@ -15,9 +17,10 @@ Rails.application.routes.draw do
   
   get '/task/calendar' => 'tasks#calendar',as:'calendar_task'
   get '/task' => 'tasks#new',as:'new_task'
-  patch '/complete_all_tasks/:id' => 'tasks#complete_all',as:'complete_all_task'
   get '/tasks/:id' => 'tasks#index',as:'index_tasks'
+  patch '/complete_all_tasks/:id' => 'tasks#complete_all',as:'complete_all_task'
   patch '/complete_tasks/:id' => 'tasks#complete',as:'complete_task'
+  delete '/destroy_all_tasks/:id' => 'tasks#destroy_all',as:'destroy_all_task'
   
   get '/challenge' => 'challenges#new',as:'new_challenge'
   patch '/complete_all_challenges' => 'challenges#complete_all',as:'complete_all_challenge'

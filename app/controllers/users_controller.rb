@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def show
    @user = User.find(params[:id])
-   @tasks = @user.tasks
-   @task = @tasks.where("start_time >= ?", Date.today)
+   @tasks = @user.tasks.order(start_time: :desc)
+   @task = @tasks.where(start_time: Time.zone.now.all_day)
   end
 
   def edit

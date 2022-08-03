@@ -6,16 +6,16 @@
  <div class="row justify-content-center">
   <%= form_with model: @task,url: tasks_path do |f| %>
    <div class="form m-2">
-    <%= f.select :list_id, @list.map{|list| [list.name,list.id]},{include_blank: "--リストを選択--"},{class:'form-control border text-white text-center',style:'background-color: black;'} %>
+    <%= f.select :list_id, @list.map{|list| [list.name,list.id]},{include_blank: "--リストを選択--"},{class:'form-control border text-center'} %>
    </div>
    
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control border text-white text-center',style:'background-color: black;',:placeholder=> "何をしますか？　例:会議" %>
+    <%= f.text_field :name,class:'form-control border text-center',:placeholder=> "何をしますか？　例:会議" %>
    </div>
    
    <div class="form m-2 text-center border" style="background-color: black;">
     <%= f.label :explanation, "MEMO",class:'text-white' %>
-    <%= f.text_area :explanation,class:'form-control border text-white',style:'background-color: black;',size:"40x5" %>
+    <%= f.text_area :explanation,class:'form-control border',size:"40x5" %>
    </div>
    
    <div class="form m-2">

@@ -1,6 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+
+body {
+  background-color: #000033;
+}
+
 .simple-calendar {
   .day {}
 
@@ -16,17 +21,30 @@
     color: blue;
   }
 
-  .today {}
+  .today {
+    background-color: #004400;
+  }
   .past {}
   .future {}
 
   .start-date {}
 
-  .prev-month {}
-  .next-month { }
+  .prev-month {
+    background-color: #444;
+  }
+  .next-month {
+    background-color: #444;
+  }
   .current-month {}
 
-  .has-events {
-    background: #CCFFCC;
-  }
+  .has-events {}
+}
+
+.form-control {
+  background-color: black;
+  color: white;
+}
+
+.garbage {
+  color: red;
 }

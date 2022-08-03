@@ -1,6 +1,6 @@
 <div class="container">
  <div class="row">
-  <div class="border p-4 m-5" style="background-color: black;">
+  <div class="border p-4 mt-5" style="background-color: black;">
    <p class="text-center" style="color: lime;">ユーザープロフィール</p>
    <table class="table table-borderless">
     <tbody>
@@ -9,7 +9,7 @@
       <td class="text-white"><%= @user.name %></td>
      </tr>
      <tr>
-      <td class="text-white">メールアドレス</td>
+      <td class="text-white" style="font-family: dot;">メールアドレス</td>
       <td class="text-white"><%= @user.email %></td>
      </tr>
     </tbody>
@@ -19,25 +19,49 @@
    </p>
   </div>
   
-  <div class="border p-4 m-5" style="background-color: black;">
+  <div class="border p-4 m-5 col-7 ml-auto" style="background-color: black;">
    <p class="text-center px-5" style="color: lime;"><%= Date.current.strftime('%m月 %d日') %></p>
-   <table class="table table-borderless">
+   <table class="table table-borderless text-center">
     <tbody>
      <% @task.each do |task| %>
       <% if task.complete %>
-       <tr>
-        <td class="text-success"><%= task.name %></td>
+       <tr class="text-success border-bottom">
+        <td><%= task.name %></td>
        </tr>
       <% else %>
-       <tr>
-        <td class="text-white"><%= task.name %></td>
+       <tr class="text-white border-bottom">
+        <td><%= task.name %></td>
        </tr>
       <% end %>
      <% end %>
      <% if @task.blank? %>
-      <tr>
-       <td class="text-white">今日の予定はありません</td>
+      <tr class="text-white">
+       <td>今日の予定はありません</td>
       </tr>
+     <% end %>
+    </tbody>
+   </table>
+   <p class="text-center">
+    <%= link_to "+ タスクを追加する",new_task_path,class:'btn btn-primary' %>
+   </p>
+  </div>
+ </div>
+  
+ <div class="row">
+  <div class="border p-4 m-5 col-7 ml-auto" style="background-color: black;">
+   <p class="text-center px-5" style="color: lime;">お知らせ</p>
+   <table class="table table-borderless text-center">
+    <tbody>
+     <% @tasks.first(4).each do |task| %>
+      <% if task.start_time <= Time.current %>
+       <tr class="border-bottom text-info">
+        <td><%= task.start_time.strftime('%H時%M分') %>:「<%= task.name %>」の開始時間です。</td>
+       </tr>
+      <% elsif task.finish_time >= Time.current %>
+       <tr class="text-danger border-bottom">
+        <td><%= task.finish_time.strftime('%H時%M分') %>:「<%= task.name %>」の終了時間です。</td>
+       </tr>
+      <% end %>
      <% end %>
     </tbody>
    </table>

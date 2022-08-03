@@ -5,7 +5,7 @@
  
  <div class="row justify-content-center">
   <table class="table table-borderless border col-6" style="background-color: black;">
-   <thead class="bg-secondary">
+   <thead class="border-bottom">
     <tr>
      <th><%= link_to "+  リストを追加する",new_list_path,style:'color: lime;' %></th>
      <th colspan="2" style="color: lime;">未完了</th>
@@ -19,8 +19,12 @@
         <%= list.name %>
        <% end %>
       </td>
-      <td class="text-white text-center" style="vertical-align: middle;"><%= list.tasks.where(complete: false).count %></td>
-      <td><%= link_to "削除",list_path(list.id),method: :delete,class:'btn btn-outline-danger' %></td>
+      <td class="text-white text-center"><%= list.tasks.where(complete: false).count %></td>
+      <td>
+       <%= link_to list_path(list.id),method: :delete do %>
+        <i class="fa-solid fa-trash-can garbage"></i>
+       <% end %>
+      </td>
      </tr>
     <% end %>
    </tbody>

@@ -1,4 +1,8 @@
 <div class="container">
+ <div class="row ml-auto col-5 mt-3">
+  <p class="text-center text-white border py-2 m-auto col-6" style="background-color: black;"><%= @user.total_point %>P</p>
+ </div>
+  
  <div class="row">
   <div class="col-6">
    <table class="table border mt-5" style="background-color: black;">
@@ -12,10 +16,18 @@
      <% @challenges.each do |challenge| %>
       <% unless challenge.complete %>
        <tr>
-        <td><%= link_to "完了",complete_challenge_path(challenge.id),method: :patch,class:'btn-sm btn-outline-success' %></td>
+        <td>
+         <%= link_to complete_challenge_path(challenge.id),method: :patch do %>
+          <i class="fa-solid fa-check fa-lg"></i>
+         <% end %>
+        </td>
         <td style="color: white; vertical-align: middle;"><%= challenge.name %></td>
         <td style="color: white; vertical-align: middle;"><%= challenge.point %>P</td>
-        <td><%= link_to "削除",challenge_path(challenge.id),method: :delete,class:'btn-sm btn-outline-danger' %></td>
+        <td>
+         <%= link_to challenge_path(challenge.id),method: :delete do %>
+          <i class="fa-solid fa-trash-can garbage"></i>
+         <% end %>
+        </td>
        </tr>
       <% end %>
      <% end %>
@@ -24,29 +36,9 @@
      </tr>
     </tbody>
    </table>
-   
-   <table class="table border mt-5" style="background-color: black;">
-    <thead>
-     <tr>
-      <th style="color: lime; vertical-align: middle;">完了リスト</th>
-      <th><%= link_to "全て削除",destroy_all_challenge_path,method: :delete,class:'btn-sm btn-danger' %></th>
-     </tr>
-    </thead>
-   
-    <tbody>
-     <% @challenges.each do |challenge| %>
-      <% if challenge.complete %>
-       <tr>
-        <td colspan="2" style="color: white;"><%= challenge.name %></td>
-       </tr>
-      <% end %>
-     <% end %>
-    </tbody>
-   </table>
   </div>
   
-  <div class="row mt-5 col-6 text-center mx-auto justify-content-center">
-   <p class="text-center text-white border py-2 m-auto col-6" style="background-color: black;"><%= @user.total_point %>P</p>
+  <div class="col-6 text-center mx-auto justify-content-center">
    <table class="table border mt-5" style="background-color: black;">
     <thead>
      <tr>
@@ -57,10 +49,18 @@
     <tbody>
      <% @rewards.each do |reward| %>
       <tr>
-       <td><%= link_to "実行",reward_path(reward.id),method: :patch,class:'btn-sm btn-outline-success' %></td>
-       <td class="text-white" style="vertical-align: middle;"><%= reward.cost_point %>P</td>
-       <td class="text-white" style="vertical-align: middle;"><%= reward.reward_name %></td>
-       <td><%= link_to "削除",reward_path(reward.id),method: :delete,class:'btn-sm btn-outline-danger' %></td>
+       <td>
+        <%= link_to reward_path(reward.id),method: :patch do %>
+         <i class="fa-solid fa-check fa-lg"></i>
+        <% end %>
+       </td>
+       <td class="text-white"><%= reward.cost_point %>P</td>
+       <td class="text-white"><%= reward.reward_name %></td>
+       <td>
+        <%= link_to reward_path(reward.id),method: :delete do %>
+         <i class="fa-solid fa-trash-can garbage"></i>
+        <% end %>
+       </td>
       </tr>
      <% end %>
     </tbody>
@@ -74,5 +74,27 @@
     </div>
    <% end %>
   </div>
+ </div>
+ 
+ <div class="row">
+  <table class="table border col-6 mt-5" style="background-color: black;">
+   <thead>
+    <tr>
+     <th style="color: lime; vertical-align: middle;">完了したチャレンジ</th>
+     <th><%= link_to "全て削除",destroy_all_challenge_path,method: :delete,class:'btn-sm btn-danger' %></th>
+    </tr>
+   </thead>
+   
+   <tbody>
+    <% @challenges.first(5).each do |challenge| %>
+     <% if challenge.complete %>
+      <tr>
+       <td style="color: white;"><%= challenge.name %></td>
+       <td><%= link_to "チャレンジする",complete_challenge_path(challenge.id),method: :patch,class:'btn-sm btn-outline-success' %></td>
+      </tr>
+     <% end %>
+    <% end %>
+   </tbody>
+  </table>
  </div>
 </div>
