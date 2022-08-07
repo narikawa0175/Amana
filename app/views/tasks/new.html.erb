@@ -1,34 +1,44 @@
 <div class="container">
+ <div class="row">
+  <% if @task.errors.any? %>
+   <ul class="border border-danger p-5 mt-5" style="background-color: black;">
+    <% @task.errors.full_messages.each do |message| %>
+     <li class="text-white" style="list-style: none;"><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+ 
  <div class="row mt-5">
-  <h5 class="mt-5" style="color: lime;">タスクを追加する</h5>
+  <h5 class="box box-text rounded p-3 mt-5">タスクを追加する</h5>
  </div>
  
  <div class="row justify-content-center">
   <%= form_with model: @task,url: tasks_path do |f| %>
    <div class="form m-2">
-    <%= f.select :list_id, @list.map{|list| [list.name,list.id]},{include_blank: "--リストを選択--"},{class:'form-control border text-center'} %>
+    <%= f.select :list_id, @list.map{|list| [list.name,list.id]},{include_blank: "--リストを選択--"},{class:'form-control text-center'} %>
    </div>
    
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control border text-center',:placeholder=> "何をしますか？　例:会議" %>
+    <%= f.text_field :name,class:'form-control text-center',:placeholder=> "何をしますか？　例:会議" %>
    </div>
    
-   <div class="form m-2 text-center border" style="background-color: black;">
-    <%= f.label :explanation, "MEMO",class:'text-white' %>
-    <%= f.text_area :explanation,class:'form-control border',size:"40x5" %>
+   <div class="form box box-text m-2 text-center">
+    <%= f.label :explanation, "MEMO" %>
+    <%= f.text_area :explanation,class:'form-control',size:"40x5" %>
    </div>
    
-   <div class="form m-2">
-    <%= f.text_field :tag_name,class:'border text-white text-center',style:'background-color: black;',:placeholder=> "タグを追加" %>
+   <div class="form text-center m-2">
+    <%= f.text_field :tag_name,class:'box box-text text-center',:placeholder=> "タグを追加" %>
    </div>
    
-   <div class="time text-center text-white">
-    <%= f.datetime_field :start_time,class:'border border-success' %>
-    <%= f.datetime_field :finish_time,class:'border border-success' %>
+   <div class="time text-center">
+    <%= f.datetime_field :start_time,class:'box' %>
+    <%= f.datetime_field :finish_time,class:'box' %>
    </div>
    
    <div class="text-center m-5">
-    <%= f.submit "追加する",class:'btn btn-success' %>
+    <%= f.submit "追加する",class:'btn btn-success box box-text' %>
    </div>
   <% end %>
  </div>

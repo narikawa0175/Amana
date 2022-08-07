@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users,only:[:show,:edit,:update]
   resources :lists,only:[:index,:create,:destroy]
   resources :tasks,only:[:create,:edit,:update,:destroy]
-  resources :challenges,only:[:index,:edit,:create,:update,:destroy]
+  resources :challenges,only:[:index,:create,:destroy]
   resources :rewards,only:[:create,:update,:destroy]
   
   patch '/users/:id/withdrawal' => 'users#withdrawal',as:'withdrawal_user'

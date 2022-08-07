@@ -1,16 +1,16 @@
 <div class="container">
  <div class="row">
-  <div class="border p-4 mt-5" style="background-color: black;">
-   <p class="text-center" style="color: lime;">ユーザープロフィール</p>
+  <div class="box rounded p-4 mt-5">
+   <p class="box-text text-center">ユーザープロフィール</p>
    <table class="table table-borderless">
     <tbody>
      <tr>
-      <td class="text-white">名前</td>
-      <td class="text-white"><%= @user.name %></td>
+      <td>名前</td>
+      <td><%= @user.name %></td>
      </tr>
      <tr>
-      <td class="text-white" style="font-family: dot;">メールアドレス</td>
-      <td class="text-white"><%= @user.email %></td>
+      <td>メールアドレス</td>
+      <td><%= @user.email %></td>
      </tr>
     </tbody>
    </table>
@@ -19,23 +19,23 @@
    </p>
   </div>
   
-  <div class="border p-4 m-5 col-7 ml-auto" style="background-color: black;">
-   <p class="text-center px-5" style="color: lime;"><%= Date.current.strftime('%m月 %d日') %></p>
+  <div class="box rounded-pill p-4 m-5 col-7 ml-auto">
+   <p class="box-text text-center px-5"><%= Date.current.strftime('%m月 %d日') %></p>
    <table class="table table-borderless text-center">
     <tbody>
      <% @task.each do |task| %>
       <% if task.complete %>
-       <tr class="text-success border-bottom">
+       <tr class="info border-bottom">
         <td><%= task.name %></td>
        </tr>
       <% else %>
-       <tr class="text-white border-bottom">
+       <tr class="border-bottom">
         <td><%= task.name %></td>
        </tr>
       <% end %>
      <% end %>
      <% if @task.blank? %>
-      <tr class="text-white">
+      <tr>
        <td>今日の予定はありません</td>
       </tr>
      <% end %>
@@ -48,13 +48,13 @@
  </div>
   
  <div class="row">
-  <div class="border p-4 m-5 col-7 ml-auto" style="background-color: black;">
-   <p class="text-center px-5" style="color: lime;">お知らせ</p>
+  <div class="box rounded-pill p-4 m-5 col-7 ml-auto">
+   <p class=" box-text text-center px-5">お知らせ</p>
    <table class="table table-borderless text-center">
     <tbody>
      <% @tasks.first(4).each do |task| %>
       <% if task.start_time <= Time.current %>
-       <tr class="border-bottom text-info">
+       <tr class="info border-bottom">
         <td><%= task.start_time.strftime('%H時%M分') %>:「<%= task.name %>」の開始時間です。</td>
        </tr>
       <% elsif task.finish_time >= Time.current %>

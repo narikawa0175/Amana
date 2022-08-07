@@ -1,6 +1,6 @@
 <div class="container">
  <div class="row">
-  <h5 class="mt-5" style="color: lime;">ユーザー情報編集</h5>
+  <h5 class="box box-text rounded-pill mt-5 p-3">ユーザー情報編集</h5>
  </div>
  
  <div class="row">
@@ -8,12 +8,12 @@
    <%= form_with model: @user,url: user_path(@user.id),method: :patch do |f| %>
     <tbody>
      <tr>
-      <td style="color: lime;">名前</td>
-      <td colspan="2"><%= f.text_field :name,size:"30",class:'border text-white',style:'background-color: black;' %></td>
+      <td align="center"><p class="box box-text rounded-pill py-1">名前</p></td>
+      <td colspan="2"><%= f.text_field :name,size:"30",class:'form-control' %></td>
      </tr>
      <tr>
-      <td style="color: lime;">メールアドレス</td>
-      <td colspan="2"><%= f.email_field :email,size:"30",class:'border text-white',style:'background-color: black;' %></td>
+      <td><p class="box box-text rounded-pill py-1">メールアドレス</p></td>
+      <td colspan="2"><%= f.email_field :email,size:"30",class:'form-control' %></td>
      </tr>
      <tr>
       <td></td>

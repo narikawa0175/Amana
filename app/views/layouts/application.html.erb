@@ -13,7 +13,7 @@
   </head>
 
   <body>
-   <header class="border-bottom border-white" style="background-color: black;">
+   <header class="border-bottom border-dark">
     <% if user_signed_in? %>
      <nav class="navbar navbar-expand-lg navbar-light">
       <div style="width: 300px; height: 150px; background-image: url(/assets/Amana.png); background-size: cover; background-position: right;"></div>
@@ -24,27 +24,27 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav ml-auto">
         <li>
-         <%= link_to lists_path,class:'btn btn-outline-primary mx-1' do %>
+         <%= link_to lists_path,class:'btn btn-dark mx-1' do %>
           <i class="fa-solid fa-list"> 　リスト　</i>
          <% end %>
         </li>
         <li>
-         <%= link_to user_path(current_user.id),class:'btn btn-outline-primary mx-1' do %>
+         <%= link_to user_path(current_user.id),class:'btn btn-dark mx-1' do %>
           <i class="fa-solid fa-house-user"> マイページ</i>
          <% end %>
         </li>
         <li>
-         <%= link_to calendar_task_path,class:'btn btn-outline-primary mx-1' do %>
+         <%= link_to calendar_task_path,class:'btn btn-dark mx-1' do %>
           <i class="fa-regular fa-calendar"> カレンダー</i>
          <% end %>
         </li>
         <li>
-         <%= link_to challenges_path,class:'btn btn-outline-primary mx-1' do %>
+         <%= link_to challenges_path,class:'btn btn-dark mx-1' do %>
           <i class="fa-solid fa-heart"> チャレンジ</i>
          <% end %>
         </li>
         <li>
-         <%= link_to destroy_user_session_path,method: :delete,class:'btn btn-outline-primary mx-1' do %>
+         <%= link_to destroy_user_session_path,method: :delete,class:'btn btn-dark mx-1' do %>
           <i class="fa-solid fa-arrow-right-from-bracket"> ログアウト</i>
          <% end %>
         </li> 

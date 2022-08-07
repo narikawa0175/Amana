@@ -1,20 +1,20 @@
 <div class="container">
  <div class="row m-5">
-  <h5 class="mt-5 border border-dark p-3" style="color: lime;">チャレンジを追加する</h5>
+  <h5 class="mt-5 border p-3" style="color: lime; background-color: black;">チャレンジを追加する</h5>
  </div>
  
  <div class="row justify-content-center">
   <%= form_with model: @challenge,url: challenges_path,method: :post do |f| %>
    <div class="form m-2">
-    <%= f.text_field :name,class:'form_control border text-white',style:'background-color: black;',size:"30" %>
+    <%= f.text_field :name,class:'form-control border text-white',size:"30",:placeholder=> "チャレンジ名　例:ランニング" %>
    </div>
    
    <div class="form m-2">
-    <%= f.select :point, {'EASY(50p)':50,'NORMAL(100p)':100,'HARD(150p)':150},{include_blank: "難易度"},{class:'form-control border text-white',style:'background-color: black;'} %>
+    <%= f.select :point, {'EASY(50p)':50,'NORMAL(100p)':100,'HARD(150p)':150},{include_blank: "難易度"},{class:'form-control border text-white'} %>
    </div>
    
    <div class="text-center">
-    <%= f.submit "追加する",class:'btn btn-success' %>
+    <%= f.submit "追加する",class:'btn btn-outline-success',style:'background-color: black;' %>
    </div>
   <% end %>
  </div>

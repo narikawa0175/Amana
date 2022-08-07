@@ -15,11 +15,15 @@ class TasksController < ApplicationController
   
   def create
    @task = Task.new(task_params)
+   @list = current_user.lists
    @task.user_id = current_user.id
    tag_list = params[:task][:tag_name].split(nil)
-   @task.save
-   @task.save_tag(tag_list)
-   redirect_to index_tasks_path(@task.list_id)
+   if @task.save
+    @task.save_tag(tag_list)
+    redirect_to index_tasks_path(@task.list_id)
+   else
+    render :new
+   end
   end
 
   def edit

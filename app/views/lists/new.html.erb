@@ -1,12 +1,22 @@
 <div class="container">
+ <div class="row">
+  <% if @list.errors.any? %>
+   <ul class="border border-danger p-5 mt-5" style="background-color: black;">
+    <% @list.errors.full_messages.each do |message| %>
+     <li class="text-white" style="list-style: none;"><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+ 
  <div class="row m-5">
-  <h4 class="m-5" style="color: lime;">リストを追加する</h4>
+  <h5 class="box box-text rounded p-3 m-5">リストを追加する</h5>
  </div>
  
  <div class="row justify-content-center">
   <%= form_with model: @list,url: lists_path do |f| %>
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control border text-center',:placeholder=> "リスト名　例:仕事" %>
+    <%= f.text_field :name,class:'form-control text-center',:placeholder=> "リスト名　例:仕事" %>
    </div>
    
    <div class="text-center m-2">

@@ -3,14 +3,14 @@
   <%= form_with url: index_tasks_path(@list.id),method: :get,class: 'boards_searchForm' do |f| %>
    <%= f.select :tag_id,options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)',class:'form-control'} %>
   <% end %>
-  <%= link_to "+",new_task_path,class:'btn btn-success rounded-circle p-0 ml-auto mr-5',style:"width: 4rem; height: 4rem; line-height: 4rem;" %>
+  <%= link_to "+",new_task_path,class:'btn btn-success rounded-circle p-0 ml-auto mr-5',style:"width: 4rem; height: 4rem; line-height: 4rem; font-size: 30px;" %>
  </div>
  
  <div class="form-inline">
-  <table class="table table-borderless border text-center col-3 mr-4" style="background-color: black;">
+  <table class="table table-borderless box box-text text-center col-3 mr-4">
    <thead class="border-bottom">
     <tr>
-     <th style="color: lime;">完了リスト</th>
+     <th>完了リスト</th>
      <th><%= link_to "全て削除",destroy_all_task_path(@list.id),method: :delete,class:'btn-sm btn-danger' %></th>
     </tr>
    </thead>
@@ -19,7 +19,7 @@
      <% if task.complete %>
       <tr>
        <td>
-        <%= link_to edit_task_path(task.id),class:'text-white' do %>
+        <%= link_to edit_task_path(task.id),class:'btn-sm btn-outline-info' do %>
          <%= task.name %>
         <% end %>
        </td>
@@ -30,14 +30,14 @@
    </tbody>
   </table>
   
-  <table class="table table-borderless border col-8 ml-5" style="background-color: black;">
+  <table class="table table-borderless box box-text col-8 ml-5">
    <thead class="border-bottom">
     <tr>
-     <th colspan="2" style="color: lime;"><%= @list.name %></th>
-     <th colspan="2" style="color: lime;">
-      名前順<%= link_to "↑",index_tasks_path(@list.id,sort: 'name'),class:'text-white' %><%= link_to "↓",index_tasks_path(@list.id,sort: 'name DESC'),class:'text-white' %>
-      作成順<%= link_to "↑",index_tasks_path(@list.id,sort: 'created_at'),class:'text-white' %><%= link_to "↓",index_tasks_path(@list.id,sort: 'created_at DESC'),class:'text-white' %>
-      日付順<%= link_to "↑",index_tasks_path(@list.id,sort: 'start_time'),class:'text-white' %><%= link_to "↓",index_tasks_path(@list.id,sort: 'start_time DESC'),class:'text-white' %>
+     <th colspan="2"><%= @list.name %></th>
+     <th colspan="2">
+      名前順<%= link_to "↑",index_tasks_path(@list.id,sort: 'name') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'name DESC') %>
+      作成順<%= link_to "↑",index_tasks_path(@list.id,sort: 'created_at') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'created_at DESC') %>
+      日付順<%= link_to "↑",index_tasks_path(@list.id,sort: 'start_time') %><%= link_to "↓",index_tasks_path(@list.id,sort: 'start_time DESC') %>
      </th>
     </tr>
    </thead>
@@ -51,11 +51,11 @@
         <% end %>
        </td>
        <td>
-        <%= link_to edit_task_path(task.id),class:'text-white' do %>
+        <%= link_to edit_task_path(task.id),class:'btn-sm btn-outline-info' do %>
          <%= task.name %>
         <% end %>
        </td>
-       <td class="text-white"><%= task.start_time.strftime('%Y.%m.%d') %></td>
+       <td><%= task.start_time.strftime('%Y.%m.%d') %></td>
        <td>
         <%= link_to task_path(task.id),method: :delete do %>
          <i class="fa-solid fa-trash-can garbage"></i>

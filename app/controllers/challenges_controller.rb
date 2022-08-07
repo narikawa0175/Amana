@@ -22,8 +22,6 @@ class ChallengesController < ApplicationController
    @challenge = Challenge.find(params[:id])
    if @challenge.complete
     @challenge.update(complete: false)
-   elsif @challenge.updated_at + 12.hours == Time.current
-    @challenge.update(complete: false)
    else
     @user.total_point += @challenge.point
     @challenge.update(complete: true)
@@ -41,12 +39,6 @@ class ChallengesController < ApplicationController
    @challenges.update_all(complete: true)
    @user.update(total_point: @user.total_point)
    redirect_to challenges_path
-  end
-  
-  def edit
-  end
-
-  def update
   end
 
   def destroy

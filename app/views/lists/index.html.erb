@@ -1,25 +1,25 @@
 <div class="container">
  <div class="row m-5">
-  <h4 class="mt-5" style="color: lime;">リスト一覧</h4>
+  <h5 class="box box-text rounded-pill mt-5 p-3">リスト一覧</h5>
  </div>
  
  <div class="row justify-content-center">
-  <table class="table table-borderless border col-6" style="background-color: black;">
+  <table class="table box box-text rounded table-borderless col-6">
    <thead class="border-bottom">
     <tr>
-     <th><%= link_to "+  リストを追加する",new_list_path,style:'color: lime;' %></th>
-     <th colspan="2" style="color: lime;">未完了</th>
+     <th class="text-center"><%= link_to "+  リストを追加する",new_list_path,class:'btn-sm btn-outline-primary' %></th>
+     <th colspan="2">未完了</th>
     </tr>
    </thead>
    <tbody>
     <% @lists.each do |list| %>
      <tr>
-      <td style="vertical-align: middle;">
-       <%= link_to index_tasks_path(list.id),class:'text-white' do %>
+      <td class="text-center">
+       <%= link_to index_tasks_path(list.id),class:'btn-sm btn-info' do %>
         <%= list.name %>
        <% end %>
       </td>
-      <td class="text-white text-center"><%= list.tasks.where(complete: false).count %></td>
+      <td class="text-center"><%= list.tasks.where(complete: false).count %></td>
       <td>
        <%= link_to list_path(list.id),method: :delete do %>
         <i class="fa-solid fa-trash-can garbage"></i>
