@@ -3,7 +3,7 @@
   <%= form_with model: @task,url: task_path(@task.id),method: :patch do |f| %>
    
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control' %>
+    <%= f.text_field :name,class:'form-control text-center' %>
    </div>
    
    <div class="form box box-text m-2 text-center">
@@ -17,8 +17,10 @@
     <% end %>
    </div>
    
-   <div class="form m-2 text-center">
+   <div class="form text-center m-2">
     <%= f.text_field :tag_name,class:'box box-text text-center',:placeholder=> "タグを追加" %>
+    <%= link_to "空にする",destroy_tags_path(@task.id),method: :delete,class:'btn-sm btn-danger' %>
+    <p>タグを複数追加する場合は半角スペースで間を開けてください</p>
    </div>
    
    <div class="time text-center">

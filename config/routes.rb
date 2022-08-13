@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
   
   root to: "homes#top"
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   patch '/complete_all_tasks/:id' => 'tasks#complete_all',as:'complete_all_task'
   patch '/complete_tasks/:id' => 'tasks#complete',as:'complete_task'
   delete '/destroy_all_tasks/:id' => 'tasks#destroy_all',as:'destroy_all_task'
+  delete '/destroy_tags/:id' => 'tasks#destroy_tags' ,as:'destroy_tags'
   
   get '/challenge' => 'challenges#new',as:'new_challenge'
   patch '/complete_all_challenges' => 'challenges#complete_all',as:'complete_all_challenge'

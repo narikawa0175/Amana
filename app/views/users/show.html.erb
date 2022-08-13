@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="box rounded p-4 mt-5">
-   <p class="box-text text-center">ユーザープロフィール</p>
+   <p class="box-text text-center">ユーザー</p>
    <table class="table table-borderless">
     <tbody>
      <tr>
@@ -26,10 +26,20 @@
      <% @task.each do |task| %>
       <% if task.complete %>
        <tr class="info border-bottom">
-        <td><%= task.name %></td>
+        <td>
+         <%= link_to index_tasks_path(task.list_id),class:'btn-sm btn-outline-info' do %>
+          <%= task.list.name %>
+         <% end %>
+        </td>
+        <td><i class="fa-solid fa-check"><%= task.name %></i></td>
        </tr>
       <% else %>
        <tr class="border-bottom">
+        <td class="text-right">
+         <%= link_to index_tasks_path(task.list_id),class:'btn-sm btn-outline-info' do %>
+          <%= task.list.name %>
+         <% end %>
+         </td>
         <td><%= task.name %></td>
        </tr>
       <% end %>

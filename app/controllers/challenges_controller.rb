@@ -13,8 +13,11 @@ class ChallengesController < ApplicationController
   def create
    @challenge = Challenge.new(challenge_params)
    @challenge.user_id = current_user.id
-   @challenge.save
-   redirect_to challenges_path
+   if @challenge.save
+    redirect_to challenges_path
+   else
+    render :new
+   end
   end
   
   def complete

@@ -1,20 +1,30 @@
 <div class="container">
+ <div class="row">
+  <% if @challenge.errors.any? %>
+   <ul class="box border border-danger p-5 mt-5">
+    <% @challenge.errors.full_messages.each do |message| %>
+     <li class="text-danger" style="list-style: none;"><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+ 
  <div class="row m-5">
-  <h5 class="mt-5 border p-3" style="color: lime; background-color: black;">チャレンジを追加する</h5>
+  <h5 class="box box-text rounded mt-5 p-3">チャレンジを追加する</h5>
  </div>
  
  <div class="row justify-content-center">
   <%= form_with model: @challenge,url: challenges_path,method: :post do |f| %>
    <div class="form m-2">
-    <%= f.text_field :name,class:'form-control border text-white',size:"30",:placeholder=> "チャレンジ名　例:ランニング" %>
+    <%= f.text_field :name,class:'form-control',size:"30",:placeholder=> "チャレンジ名　例:ランニング" %>
    </div>
    
    <div class="form m-2">
-    <%= f.select :point, {'EASY(50p)':50,'NORMAL(100p)':100,'HARD(150p)':150},{include_blank: "難易度"},{class:'form-control border text-white'} %>
+    <%= f.select :point, {'EASY(50p)':50,'NORMAL(100p)':100,'HARD(150p)':150},{include_blank: "難易度"},{class:'form-control'} %>
    </div>
    
    <div class="text-center">
-    <%= f.submit "追加する",class:'btn btn-outline-success',style:'background-color: black;' %>
+    <%= f.submit "追加する",class:'btn btn-success' %>
    </div>
   <% end %>
  </div>

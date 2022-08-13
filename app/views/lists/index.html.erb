@@ -15,7 +15,7 @@
     <% @lists.each do |list| %>
      <tr>
       <td class="text-center">
-       <%= link_to index_tasks_path(list.id),class:'btn-sm btn-info' do %>
+       <%= link_to index_tasks_path(list.id),class:'btn-sm btn-outline-info' do %>
         <%= list.name %>
        <% end %>
       </td>

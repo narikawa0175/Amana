@@ -16,6 +16,14 @@ ja:
        
       task:
        name: タスク名
+       
+      challenge:
+       name: チャレンジ名
+       point: ポイント
+       
+      reward:
+       reward_name: ご褒美名
+       cost_point: 消費ポイント
 
   date:
     formats:

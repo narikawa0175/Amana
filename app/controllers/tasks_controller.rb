@@ -56,6 +56,13 @@ class TasksController < ApplicationController
    redirect_to index_tasks_path(@list.id)
   end
   
+  def destroy_tags
+   @task = Task.find(params[:id])
+   @task_tags = @task.tags
+   @task_tags.destroy_all
+   redirect_to edit_task_path(@task.id)
+  end
+  
   def complete
    @task = Task.find(params[:id])
    if @task.complete

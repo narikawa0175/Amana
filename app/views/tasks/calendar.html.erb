@@ -5,7 +5,7 @@
   <% events.first(3).each do |event| %>
    <div>
     <%= link_to edit_task_path(event.id) do %>
-     <%= event.name %>(<%= event.start_time.strftime('%m:%d') %>~<%= event.finish_time.strftime('%m:%d') %>)
+     <%= event.name %>(<%= event.start_time.strftime('%H:%M') %>~<%= event.finish_time.strftime('%H:%M') %>)
     <% end %>
    </div>
   <% end %>

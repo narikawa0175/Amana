@@ -1,9 +1,15 @@
 class RewardsController < ApplicationController
   def create
+   @user = User.find(current_user.id)
+   @challenges = @user.challenges
    @reward = Reward.new(reward_params)
+   @rewards = @user.rewards
    @reward.user_id = current_user.id
-   @reward.save
-   redirect_to challenges_path
+   if @reward.save
+    redirect_to challenges_path
+   else
+    render template: "challenges/index"
+   end
   end
 
   def update

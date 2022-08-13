@@ -1,9 +1,9 @@
 <div class="container">
  <div class="row">
   <% if @list.errors.any? %>
-   <ul class="border border-danger p-5 mt-5" style="background-color: black;">
+   <ul class="box border border-danger p-5 mt-5">
     <% @list.errors.full_messages.each do |message| %>
-     <li class="text-white" style="list-style: none;"><%= message %></li>
+     <li class="text-danger" style="list-style: none;"><%= message %></li>
     <% end %>
    </ul>
   <% end %>

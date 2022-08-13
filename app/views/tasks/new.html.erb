@@ -1,9 +1,9 @@
 <div class="container">
  <div class="row">
   <% if @task.errors.any? %>
-   <ul class="border border-danger p-5 mt-5" style="background-color: black;">
+   <ul class="box border border-danger p-5 mt-5">
     <% @task.errors.full_messages.each do |message| %>
-     <li class="text-white" style="list-style: none;"><%= message %></li>
+     <li class="text-danger" style="list-style: none;"><%= message %></li>
     <% end %>
    </ul>
   <% end %>
@@ -30,6 +30,7 @@
    
    <div class="form text-center m-2">
     <%= f.text_field :tag_name,class:'box box-text text-center',:placeholder=> "タグを追加" %>
+    <p>タグを複数追加する場合は半角スペースで間を開けてください</p>
    </div>
    
    <div class="time text-center">
@@ -38,7 +39,7 @@
    </div>
    
    <div class="text-center m-5">
-    <%= f.submit "追加する",class:'btn btn-success box box-text' %>
+    <%= f.submit "追加する",class:'btn btn-success' %>
    </div>
   <% end %>
  </div>

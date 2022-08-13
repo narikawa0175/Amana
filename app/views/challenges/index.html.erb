@@ -1,14 +1,24 @@
 <div class="container">
+ <div class="row">
+  <% if @reward.errors.any? %>
+   <ul class="box border border-danger p-5 mt-5">
+    <% @reward.errors.full_messages.each do |message| %>
+     <li class="text-danger" style="list-style: none;"><%= message %></li>
+    <% end %>
+   </ul>
+  <% end %>
+ </div>
+ 
  <div class="row ml-auto col-5 mt-3">
-  <p class="text-center text-white border py-2 m-auto col-6" style="background-color: black;"><%= @user.total_point %>P</p>
+  <p class="box box-text rounded-pill text-center py-2 m-auto col-6"><%= @user.total_point %>P</p>
  </div>
   
  <div class="row">
   <div class="col-6">
-   <table class="table border mt-5" style="background-color: black;">
+   <table class="table table-borderless box mt-5">
     <thead>
-     <tr>
-      <th colspan="4"><%= link_to "+  チャレンジを追加する",new_challenge_path,style:'color: lime;' %></th>
+     <tr class="border-bottom">
+      <th colspan="4"><%= link_to "+  チャレンジを追加する",new_challenge_path %></th>
      </tr>
     </thead>
    
@@ -21,8 +31,8 @@
           <i class="fa-solid fa-check fa-lg"></i>
          <% end %>
         </td>
-        <td style="color: white; vertical-align: middle;"><%= challenge.name %></td>
-        <td style="color: white; vertical-align: middle;"><%= challenge.point %>P</td>
+        <td><%= challenge.name %></td>
+        <td><%= challenge.point %>P</td>
         <td>
          <%= link_to challenge_path(challenge.id),method: :delete do %>
           <i class="fa-solid fa-trash-can garbage"></i>
@@ -39,10 +49,10 @@
   </div>
   
   <div class="col-6 text-center mx-auto justify-content-center">
-   <table class="table border mt-5" style="background-color: black;">
+   <table class="table table-borderless box mt-5">
     <thead>
-     <tr>
-      <th colspan="4" class="text-center col-4" style="color: lime;">ご褒美リスト</th>
+     <tr class="border-bottom">
+      <th colspan="4" class="box-text text-center col-4">ご褒美リスト</th>
      </tr>
     </thead>
     
@@ -54,8 +64,8 @@
          <i class="fa-solid fa-check fa-lg"></i>
         <% end %>
        </td>
-       <td class="text-white"><%= reward.cost_point %>P</td>
-       <td class="text-white"><%= reward.reward_name %></td>
+       <td><%= reward.cost_point %>P</td>
+       <td><%= reward.reward_name %></td>
        <td>
         <%= link_to reward_path(reward.id),method: :delete do %>
          <i class="fa-solid fa-trash-can garbage"></i>
@@ -68,8 +78,8 @@
    
    <%= form_with model: @reward,url: rewards_path,method: :post do |f| %>
     <div class="form">
-     <%= f.text_field :reward_name,class:'border text-white',style:'background-color: black;',:placeholder=> "ご褒美名　例:ゲーム" %></br>
-     <%= f.select :cost_point, {'ご褒美小(100p)':100,'ご褒美中(150p)':150,'ご褒美大(200p)':200},{include_blank: "消費ポイント"},{class:'text-white m-2',style:'background-color: black;'} %>
+     <%= f.text_field :reward_name,style:'background-color: #FFFFCC; border: 2px solid #FFCC00;',:placeholder=> "ご褒美名　例:ゲーム" %></br>
+     <%= f.select :cost_point, {'ご褒美小(100p)':100,'ご褒美中(150p)':150,'ご褒美大(200p)':200},{include_blank: "消費ポイント"},{class:'m-2',style:'background-color: #FFFFCC; border: 2px solid #FFCC00;'} %>
      <%= f.submit "追加",class:'btn-sm btn-success' %>
     </div>
    <% end %>
@@ -77,10 +87,10 @@
  </div>
  
  <div class="row">
-  <table class="table border col-6 mt-5" style="background-color: black;">
+  <table class="table table-borderless box col-6 mt-5">
    <thead>
-    <tr>
-     <th style="color: lime; vertical-align: middle;">完了したチャレンジ</th>
+    <tr class="border-bottom">
+     <th class="box-text">完了したチャレンジ</th>
      <th><%= link_to "全て削除",destroy_all_challenge_path,method: :delete,class:'btn-sm btn-danger' %></th>
     </tr>
    </thead>
@@ -89,8 +99,8 @@
     <% @challenges.first(5).each do |challenge| %>
      <% if challenge.complete %>
       <tr>
-       <td style="color: white;"><%= challenge.name %></td>
-       <td><%= link_to "チャレンジする",complete_challenge_path(challenge.id),method: :patch,class:'btn-sm btn-outline-success' %></td>
+       <td><%= challenge.name %></td>
+       <td><%= link_to "チャレンジする",complete_challenge_path(challenge.id),method: :patch,class:'btn-sm btn-success' %></td>
       </tr>
      <% end %>
     <% end %>
