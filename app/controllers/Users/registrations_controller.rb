@@ -13,12 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
      super
-     user = current_user
-     user.lists.create(name: "このサイトの使い方",user_id: user.id)
-     user.lists.each do |list|
+     @user = current_user
+     @user.lists.create(name: "このサイトの使い方",user_id: @user.id)
+     @user.lists.each do |list|
       list.tasks.create([
        {list_id: list.id,
-        user_id: user.id,
+        user_id: @user.id,
         name: "タスクを追加する",
         explanation: "・マイページの「タスクを追加する」ボタンかタスク一覧画面の「＋」ボタンをクリックするとタスクの新規登録画面に移動します。
 ・一覧画面のチェックマークをクリックするとタスクが完了します。",
@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         finish_time: Time.current},
        {
         list_id: list.id,
-        user_id: user.id,
+        user_id: @user.id,
         name: "タスク新規作成時の各項目について",
         explanation: "リストを選択: リストを設定することでタスクを分類できます。
 タスク名: タスクの名前、タイトルを設定できます。
@@ -38,7 +38,7 @@ MEMO: 簡単なメモが書けます。
        },
        {
         list_id: list.id,
-        user_id: user.id,
+        user_id: @user.id,
         name: "チャレンジについて",
         explanation: "・チャレンジでは日々の習慣や毎日の目標などを設定し、達成することでポイントを貯められます。
 ・ポイントを消費して自分で設定した「ご褒美」が貰えます。",
