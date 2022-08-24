@@ -4,24 +4,26 @@
  </div>
  
  <div class="row">
-  <table class="table table-borderless mt-5 col-7 text-center mx-auto">
+  <div class="form mx-auto">
    <%= form_with model: @user,url: user_path(@user.id),method: :patch do |f| %>
-    <tbody>
-     <tr>
-      <td align="center"><p class="box box-text rounded-pill py-1">名前</p></td>
-      <td colspan="2"><%= f.text_field :name,size:"30",class:'form-control' %></td>
-     </tr>
-     <tr>
-      <td><p class="box box-text rounded-pill py-1">メールアドレス</p></td>
-      <td colspan="2"><%= f.email_field :email,size:"30",class:'form-control' %></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td><%= f.submit "変更する",class:'btn btn-success' %></td>
-      <td><%= link_to "退会する",withdrawal_user_path(@user.id),method: :patch,"data-confirm" => "本当に退会しますか？",class:'btn btn-danger' %></td>
-     </tr>
-    </tbody>
+    <table class="table table-borderless mt-5 text-center mx-auto">
+     <tbody>
+      <tr>
+       <td align="center"><p class="box box-text rounded-pill p-1">名前</p></td>
+       <td colspan="2"><%= f.text_field :name,size:"30",class:'form-control' %></td>
+      </tr>
+      <tr>
+       <td><p class="box box-text rounded-pill p-1">メールアドレス</p></td>
+       <td colspan="2"><%= f.email_field :email,size:"30",class:'form-control' %></td>
+      </tr>
+      <tr>
+       <td></td>
+       <td><%= f.submit "変更する",class:'btn btn-success' %></td>
+       <td><%= link_to "退会する",withdrawal_user_path(@user.id),method: :patch,"data-confirm" => "本当に退会しますか？",class:'btn btn-danger' %></td>
+      </tr>
+     </tbody>
+    </table>
    <% end %>
-  </table>
+  </div>
  </div>
 </div>
