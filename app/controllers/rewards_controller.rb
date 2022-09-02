@@ -26,8 +26,12 @@ class RewardsController < ApplicationController
 
   def destroy
    @reward = Reward.find(params[:id])
-   @reward.destroy
-   redirect_to challenges_path
+   if @reward.user_id == current_user.id
+    @reward.destroy
+    redirect_to challenges_path
+   else
+    redirect_to user_path(current_user.id)
+   end
   end
   
   private

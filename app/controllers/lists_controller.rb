@@ -20,8 +20,12 @@ class ListsController < ApplicationController
   
   def destroy
    list = List.find(params[:id])
-   list.destroy
-   redirect_to lists_path
+   if list.user_id == current_user.id
+    list.destroy
+    redirect_to lists_path
+   else
+    redirect_to user_path(current_user.id)
+   end
   end
   
   private
