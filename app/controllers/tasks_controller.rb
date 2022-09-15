@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   def index
    @list = List.find(params[:id])
+   @task = current_user.tasks
+   @task.each do |task|
+    @tags = task.tags
+   end
    @tasks = params[:tag_id].present? ? Tag.find(params[:tag_id]).tasks : @list.tasks.order(params[:sort])
   end
 

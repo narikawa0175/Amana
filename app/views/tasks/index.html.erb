@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row m-5">
   <%= form_with url: index_tasks_path(@list.id),method: :get,class: 'boards_searchForm' do |f| %>
-   <%= f.select :tag_id,options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)',class:'form-control'} %>
+   <%= f.select :tag_id,options_from_collection_for_select(@tags, :id, :tag_name, params[:tag_id]),{prompt: 'タグで絞り込み検索'},{onchange: 'submit(this.form)',class:'form-control'} %>
   <% end %>
   <%= link_to "+",new_task_path,class:'btn btn-success rounded-circle p-0 ml-auto mr-5',style:"width: 4rem; height: 4rem; line-height: 4rem; font-size: 30px;" %>
  </div>
