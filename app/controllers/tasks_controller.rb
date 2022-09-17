@@ -5,7 +5,7 @@ class TasksController < ApplicationController
    @task.each do |task|
     @tags = task.tags
    end
-   @tasks = params[:tag_id].present? ? Tag.find(params[:tag_id]).tasks : @list.tasks.order(params[:sort])
+   @tasks = params[:tag_id].present? ? Tag.find(params[:tag_id]).tasks : @task.order(params[:sort])
   end
 
   def new
