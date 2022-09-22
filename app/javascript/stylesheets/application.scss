@@ -31,6 +31,11 @@ body {
   border: 2px solid #FFCC00;
 }
 
+.circle-box {
+  background-color: #FFFFCC;
+  border: 2px solid #FFCC00;
+}
+
 .box-text {
   color: #800000;
 }
@@ -77,5 +82,20 @@ body {
   }
   .calendar-title {
     color: #800000;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .row {
+    display: block;
+  }
+  
+  .box {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .circle-box {
+    margin-left: 0;
   }
 }
