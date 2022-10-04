@@ -95,6 +95,10 @@ body {
     margin: 50px auto !important;
   }
   
+  tr {
+    margin-bottom: 50px;
+  }
+  
   th {
     display: block;
     width: 90%;
@@ -102,11 +106,24 @@ body {
   
   td {
     display: block;
+    padding: 0 !important;
     width: 90%;
     margin: 0 auto;
   }
   
   .title-text {
-    width: 200px;
+    height: 100%;
+    border-radius: 0rem !important;
+    padding: 0 !important;
+    margin: 20px 0 0 0 !important;
+  }
+  
+  .form-control {
+    border-top: none;
+    background-color: #FFFFFF;
+  }
+  
+  .btn {
+    margin: 10px 0;
   }
 }
