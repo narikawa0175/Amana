@@ -93,18 +93,14 @@ body {
   .box {
     width: 90%;
     margin: 50px auto !important;
+    text-align: center;
   }
   
   tr {
     margin-bottom: 50px;
   }
   
-  th {
-    display: block;
-    width: 90%;
-  }
-  
-  td {
+  .form-cell {
     display: block;
     padding: 0 !important;
     width: 90%;
@@ -125,5 +121,9 @@ body {
   
   .btn {
     margin: 10px 0;
+  }
+  
+  .text-btn {
+    text-align: center;
   }
 }

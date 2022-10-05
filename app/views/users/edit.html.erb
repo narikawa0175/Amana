@@ -9,17 +9,17 @@
     <table class="table table-borderless mt-5 text-center mx-auto">
      <tbody>
       <tr>
-       <td align="center"><p class="title-text box-text rounded-pill p-1">名前</p></td>
-       <td colspan="2"><%= f.text_field :name,size:"30",class:'form-control' %></td>
+       <td class="form-cell" align="center"><p class="title-text box-text rounded-pill p-1">名前</p></td>
+       <td class="form-cell" colspan="2"><%= f.text_field :name,size:"30",class:'form-control' %></td>
       </tr>
       <tr>
-       <td><p class="title-text box-text rounded-pill p-1">メールアドレス</p></td>
-       <td colspan="2"><%= f.email_field :email,size:"30",class:'form-control' %></td>
+       <td class="form-cell"><p class="title-text box-text rounded-pill p-1">メールアドレス</p></td>
+       <td class="form-cell" colspan="2"><%= f.email_field :email,size:"30",class:'form-control' %></td>
       </tr>
       <tr>
-       <td></td>
-       <td><%= f.submit "変更する",class:'btn btn-success' %></td>
-       <td><%= link_to "退会する",withdrawal_user_path(@user.id),method: :patch,"data-confirm" => "本当に退会しますか？",class:'btn btn-danger' %></td>
+       <td class="form-cell"></td>
+       <td class="form-cell"><%= f.submit "変更する",class:'btn btn-success' %></td>
+       <td class="form-cell"><%= link_to "退会する",withdrawal_user_path(@user.id),method: :patch,"data-confirm" => "本当に退会しますか？",class:'btn btn-danger' %></td>
       </tr>
      </tbody>
     </table>
