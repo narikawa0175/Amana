@@ -44,6 +44,10 @@ body {
   color: #0099FF;
 }
 
+.text-btn {
+  text-align: center;
+}
+
 .simple-calendar {
   .day {}
 
@@ -94,6 +98,10 @@ body {
     width: 90%;
     margin: 50px auto !important;
     text-align: center;
+  }
+  
+  .home {
+    margin: 50px auto !important;
   }
   
   tr {

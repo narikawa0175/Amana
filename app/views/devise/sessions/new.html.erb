@@ -8,16 +8,15 @@
   <table class="table table-borderless border-bottom border-dark">
    <tbody>
     <tr>
-     <td class="box-text"><i class="fa-solid fa-envelope fa-lg"></i> メールアドレス</td>
-     <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %></td>
+     <td class="box-text form-cell"><i class="fa-solid fa-envelope fa-lg"></i> メールアドレス</td>
+     <td class="form-cell"><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %></td>
     </tr>
     <tr>
-     <td class="box-text"><i class="fa-solid fa-lock fa-lg"></i> パスワード</td>
-     <td><%= f.password_field :password, autocomplete: "current-password",class:'form-control' %></td>
+     <td class="box-text form-cell"><i class="fa-solid fa-lock fa-lg"></i> パスワード</td>
+     <td class="form-cell"><%= f.password_field :password, autocomplete: "current-password",class:'form-control' %></td>
     </tr>
     <tr>
-     <td></td>
-     <td class="text-btn"><%= f.submit "ログイン",class:'btn btn-success' %></td>
+     <td colspan="2" class="text-btn"><%= f.submit "ログイン",class:'btn btn-success' %></td>
     </tr>
    </tbody>
   </table>

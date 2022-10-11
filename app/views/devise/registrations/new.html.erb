@@ -9,29 +9,28 @@
   <table class="table table-borderless border-bottom border-dark">
    <tbody>
     <tr>
-     <td class="text-center box-text"><i class="fa-solid fa-user fa-lg"></i> 名前</td>
-     <td><%= f.text_field :name,class:'form-control' %></td>
+     <td class="text-center box-text form-cell"><i class="fa-solid fa-user fa-lg"></i> 名前</td>
+     <td class="form-cell"><%= f.text_field :name,class:'form-control' %></td>
     </tr>
     <tr>
-     <td class="text-center box-text"><i class="fa-solid fa-envelope fa-lg"></i> メールアドレス</td>
-     <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %></td>
+     <td class="text-center box-text form-cell"><i class="fa-solid fa-envelope fa-lg"></i> メールアドレス</td>
+     <td class="form-cell"><%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %></td>
     </tr>
     <tr>
-     <td class="text-center box-text"><i class="fa-solid fa-lock fa-lg"></i> パスワード</td>
-     <td><%= f.password_field :password, autocomplete: "new-password",class:'form-control' %></td>
+     <td class="text-center box-text form-cell"><i class="fa-solid fa-lock fa-lg"></i> パスワード</td>
+     <td class="form-cell"><%= f.password_field :password, autocomplete: "new-password",class:'form-control' %></td>
     </tr>
     <tr>
-     <td>
+     <td class="form-cell">
       <p class="text-center box-text"><i class="fa-solid fa-lock fa-lg"></i> 
        パスワード</br>
        (確認用)
       </p>
      </td>
-     <td><%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control' %></td>
+     <td class="form-cell"><%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control' %></td>
     </tr>
     <tr>
-     <td></td>
-     <td class="text-btn"><%= f.submit "新規登録",class:'btn btn-success' %></td>
+     <td colspan="2" class="text-btn"><%= f.submit "新規登録",class:'btn btn-success' %></td>
     </tr>
    </tbody>
   </table>
