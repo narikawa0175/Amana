@@ -13,6 +13,10 @@ header {
   background-position: right;
 }
 
+.nav-link {
+  color: white !important;
+}
+
 body {
   background-color: #FFFF99;
 }
@@ -141,5 +145,19 @@ body {
   
   .point {
     margin: 0 auto !important;
+  }
+  
+  .navbar-nav {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    width: 130px;
+  }
+  
+  .nav-link {
+    padding: 6px;
   }
 }
