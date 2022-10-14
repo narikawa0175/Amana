@@ -35,6 +35,11 @@ body {
   border: 2px solid #FFCC00;
 }
 
+.form-box {
+  background-color: #FFFFCC;
+  border: 2px solid #FFCC00;
+}
+
 .box-text {
   color: #800000;
 }
@@ -102,6 +107,11 @@ body {
     width: 90%;
     margin: 50px auto !important;
     text-align: center;
+  }
+  
+  .form-box {
+    width: 90%;
+    margin: 20px auto !important;
   }
   
   .home {

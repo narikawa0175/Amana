@@ -6,26 +6,26 @@
     <%= f.text_field :name,class:'form-control text-center' %>
    </div>
    
-   <div class="form box box-text m-2 text-center">
+   <div class="form form-box box-text m-2 text-center">
     <%= f.label :explanation,"MEMO" %>
     <%= f.text_area :explanation,class:'form-control',size:"60x10" %>
    </div>
    
-   <div class="form box box-text m-2">
+   <div class="form form-box box-text m-2">
     <% @task_tags.each do |tag| %>
      #<%= tag.tag_name %>
     <% end %>
    </div>
    
    <div class="form text-center m-2">
-    <%= f.text_field :tag_name,class:'box box-text text-center',:placeholder=> "タグを追加" %>
+    <%= f.text_field :tag_name,class:'form-box box-text text-center',:placeholder=> "タグを追加" %></br>
     <%= link_to "空にする",destroy_tags_path(@task.id),method: :delete,class:'btn-sm btn-danger' %>
     <p>タグを複数追加する場合は半角スペースで間を開けてください</p>
    </div>
    
    <div class="time text-center">
-    <%= f.datetime_field :start_time,class:'box box-text' %> ~ 
-    <%= f.datetime_field :finish_time,class:'box box-text' %>
+    <%= f.datetime_field :start_time,class:'form-box box-text' %> ~ 
+    <%= f.datetime_field :finish_time,class:'form-box box-text' %>
    </div>
    
    <div class="text-center m-5">

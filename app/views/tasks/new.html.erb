@@ -23,19 +23,19 @@
     <%= f.text_field :name,class:'form-control text-center',:placeholder=> "何をしますか？　例:会議" %>
    </div>
    
-   <div class="form box box-text m-2 text-center">
+   <div class="form form-box box-text m-2 text-center">
     <%= f.label :explanation, "MEMO" %>
     <%= f.text_area :explanation,class:'form-control',size:"40x5" %>
    </div>
    
    <div class="form text-center m-2">
-    <%= f.text_field :tag_name,class:'box box-text text-center',:placeholder=> "タグを追加" %>
+    <%= f.text_field :tag_name,class:'form-box box-text text-center',:placeholder=> "タグを追加" %>
     <p>タグを複数追加する場合は半角スペースで間を開けてください</p>
    </div>
    
    <div class="time text-center">
-    <%= f.datetime_field :start_time,value: Time.current.strftime('%Y-%m-%dT00:00:00'),class:'box' %>
-    <%= f.datetime_field :finish_time,value: Time.current.strftime('%Y-%m-%dT00:00:00'),class:'box' %>
+    <%= f.datetime_field :start_time,value: Time.current.strftime('%Y-%m-%dT00:00:00'),class:'form-box' %>
+    <%= f.datetime_field :finish_time,value: Time.current.strftime('%Y-%m-%dT00:00:00'),class:'form-box' %>
    </div>
    
    <div class="text-center m-5">
